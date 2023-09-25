@@ -42,7 +42,7 @@ struct ContentView: View {
     }
     private func randomAnswer() {
         nameIsFocused = false
-        var answerNumber = Int.random(in: 1...3)
+        let answerNumber = Int.random(in: 1...3)
         textAsk = ""
         if answerNumber == 1 {
             textAnswer = "ДА"
