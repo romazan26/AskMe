@@ -11,33 +11,37 @@ struct ContentView: View {
     
     @State private var textAsk = ""
     @State private var textAskGet = ""
-    @State private var textAnswer = ""
+    @State private var textAnswer = "ответ"
     @FocusState private var nameIsFocused: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
              Image(systemName: "bell")
                 .resizable()
-                .frame(width: 200, height: 200)
+                .frame(width: 180, height: 180)
             Text("Задай вопрос на который можно ответь ДА или НЕТ")
                 .font(.title)
-                .padding(.bottom, 50)
+                .frame(height: 80)
             HStack {
                 TextField("Вопрос", text: $textAsk)
+                    .borderd()
                     .font(.title)
                     .focused($nameIsFocused)
+                    
                 Button(action: randomAnswer, label: {
                     Text("Ответ")
-                        .font(.title)
+                        .font(.largeTitle)
                 })
                 .buttonStyle(.borderedProminent)
             }
             TextTitleView(text: $textAskGet)
-            
+                .frame(height: 40)
             TextTitleView(text: $textAnswer)
+                .frame(height: 40)
                 .foregroundColor(.red)
+                .padding()
                 .background(.yellow)
-                .cornerRadius(10)
+                .cornerRadius(20)
         }
         .padding()
     }
@@ -64,5 +68,24 @@ struct TextTitleView: View {
     @Binding var text: String
     var body: some View {
         Text(text).font(.title)
+    }
+}
+
+struct BorderedViewModifair: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(lineWidth: 2)
+                    .foregroundColor(.blue)
+            )
+            .shadow(color: .gray, radius: 3, x: 1, y: 2)
+    }
+}
+
+extension TextField {
+    func borderd() -> some View {
+        modifier(BorderedViewModifair())
     }
 }
