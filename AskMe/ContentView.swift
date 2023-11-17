@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    //MARK: - Properies
     @State private var textAsk = ""
     @State private var textAskGet = ""
     @State private var textAnswer = "ответ"
     @FocusState private var nameIsFocused: Bool
     
+    //MARK: - body
     var body: some View {
         VStack(spacing: 30) {
-             Image(systemName: "bell")
+            
+            Image(systemName: "bell")
                 .resizable()
                 .frame(width: 180, height: 180)
             Text("Задай вопрос на который можно ответь ДА или НЕТ")
@@ -27,24 +29,29 @@ struct ContentView: View {
                     .borderd()
                     .font(.title)
                     .focused($nameIsFocused)
-                    
+                
                 Button(action: randomAnswer, label: {
                     Text("Ответ")
                         .font(.largeTitle)
                 })
                 .buttonStyle(.borderedProminent)
             }
+            //MARK: - Ask
             TextTitleView(text: $textAskGet)
-                .frame(height: 40)
+            
+            //MARK: - Answer
             TextTitleView(text: $textAnswer)
-                .frame(height: 40)
                 .foregroundColor(.red)
                 .padding()
                 .background(.yellow)
                 .cornerRadius(20)
         }
         .padding()
+        .onTapGesture {
+            nameIsFocused = false
+        }
     }
+    //MARK: - functionRandom
     private func randomAnswer() {
         nameIsFocused = false
         let answerNumber = Int.random(in: 1...3)
@@ -59,7 +66,7 @@ struct ContentView: View {
         }
     }
 }
-
+//MARK: - Preview
 #Preview {
     ContentView()
 }
@@ -68,6 +75,7 @@ struct TextTitleView: View {
     @Binding var text: String
     var body: some View {
         Text(text).font(.title)
+            .frame(height: 40)
     }
 }
 
