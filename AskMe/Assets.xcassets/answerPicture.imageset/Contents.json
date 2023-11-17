@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "1652926800_4-celes-club-p-fon-voprosi-krasivie-4.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
