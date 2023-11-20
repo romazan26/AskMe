@@ -24,18 +24,20 @@ struct ASKView: View {
             VStack(spacing: 30) {
                 Text("Задай вопрос на который можно ответь ДА или НЕТ")
                     .multilineTextAlignment(.center)
-                    .padding(8)
-                    .font(.title)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .bold()
-                    .foregroundStyle(.white)
-                    .background(.opacity(0.6))
-                    .cornerRadius(10)
+                    .padding(10)
+                    .background(.yellow)
+                    .opacity(0.8)
+                    .clipShape(Capsule())
                 HStack {
                     TextField("Вопрос", text: $textAsk)
                         .borderd()
                         .font(.title)
                         .focused($nameIsFocused)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
+                        .background().opacity(0.7)
+                    
                     Button(action: randomAnswer, label: {
                         Text("Ответ")
                             .font(.largeTitle)
@@ -49,7 +51,7 @@ struct ASKView: View {
                     .foregroundStyle(.white)
                     .background(.opacity(0.6))
                     .cornerRadius(10)
-                    .animation(.easeIn)
+                    .animation(.easeIn, value: textAskGet)
                     
                 
                 //MARK: - Answer
@@ -58,12 +60,12 @@ struct ASKView: View {
                     .padding()
                     .background(.yellow)
                     .cornerRadius(20)
-                    .animation(.easeIn)
+                    .animation(.easeIn, value: textAnswer)
             }
             .padding()
-            .onTapGesture {
-                nameIsFocused = false
-        }
+            
+        }.onTapGesture {
+            nameIsFocused = false
         }
     }
     //MARK: - functionRandom
