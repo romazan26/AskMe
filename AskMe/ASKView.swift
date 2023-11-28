@@ -35,8 +35,8 @@ struct ASKView: View {
                         .borderd()
                         .font(.title)
                         .focused($nameIsFocused)
-                        .foregroundColor(.black)
-                        .background().opacity(0.7)
+                        .bold()
+                        .background(.yellow).opacity(0.7)
                     
                     Button(action: randomAnswer, label: {
                         Text("Ответ")
@@ -45,18 +45,20 @@ struct ASKView: View {
                     .buttonStyle(.borderedProminent)
                     
                 }
-                //MARK: - Ask
+                //MARK: - AskText
                 TextTitleView(text: $textAskGet)
                     .padding(8)
                     .foregroundStyle(.white)
+                    .bold()
                     .background(.opacity(0.6))
                     .cornerRadius(10)
                     .animation(.easeIn, value: textAskGet)
                     
                 
-                //MARK: - Answer
+                //MARK: - AnswerText
                 TextTitleView(text: $textAnswer)
                     .foregroundColor(.red)
+                    .bold()
                     .padding()
                     .background(.yellow)
                     .cornerRadius(20)
